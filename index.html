@@ -1,31 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <title>Bootstrap Theme Simply Me</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.4.4/lottie.js" type="text/javascript"></script>
+<style>
+  body{
+    position: relative;
 
+  }
+  .eggBox{
+    position: absolute;
+    left:50%;
+    top: 50%;
+    transform:  translate(-50%,-50%);
+  }
+.textBoxP{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  font-size: 0px;
+}
+</style>
 </head>
 <body>
+  <div class="eggBox">
     <div  id="bodymovinbell" > </div>
-
-
+  </div>
+  <div class="textBox">
+    <p  class="textBoxP">1000 تومان شارژ رایگان</p>
+  </div>
     <script type="text/javascript">
-      lottie.loadAnimation({
+    var height = $(window).height();
+    $('body').css('height',height );
+    $('.eggBox').css('width',$(window).width()-50);
+    $('.textBox').css('width',$(window).width()-50);
+    $('.textBox').css('heigth',height);
+    var anim =   lottie.loadAnimation({
         container:  document.getElementById('bodymovinbell'), // the dom element that will contain the animation
         renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: 'data.json' // the path to the animation json
+        loop: false,
+        autoplay: false,
+        path: 'data.json',
+totalFrames:10,
       });
+
+document.getElementById("bodymovinbell").addEventListener("click", function() {
+  anim.play();
+  $(".textBoxP").delay(2900).animate({
+    top: '20px',
+    fontSize: '25px',
+  });
+ });
+console.log(anim);
+
+
+
+
     </script>
 
 </body>
 </html>
- 
